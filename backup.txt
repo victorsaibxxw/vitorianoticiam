@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atualizações ES: Vitória, Vila Velha e Serra</title>
+
+  <meta name="description" content="Fique por dentro das novidades em Vitória, Vila Velha e Serra, Espírito Santo. Notícias fresquinhas e atualizadas.">
+  <meta name="keywords" content="Notícias ES, Vitória, Vila Velha, Serra, jornal online, Espírito Santo">
+  <meta name="author" content="Seu Nome Aqui">
+  <link rel="canonical" href="https://www.seusite.com.br" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f7;
+      color: #222;
+      line-height: 1.5;
+      padding: 25px;
+      padding-right: 350px; /* espaço para anúncio fixo */
+    }
+
+    header {
+      background: #0055cc;
+      color: white;
+      padding: 18px 15px;
+      border-radius: 6px;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 14px;
+    }
+
+    nav a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    article {
+      background: white;
+      border-left: 6px solid #0055cc;
+      border-radius: 6px;
+      padding: 22px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    article h2 {
+      color: #0055cc;
+      margin-bottom: 12px;
+      font-size: 1.5rem;
+    }
+
+    article p {
+      margin-bottom: 12px;
+      font-size: 1rem;
+      color: #444;
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* Anúncio fixo */
+    #ads {
+      position: fixed;
+      top: 90px;
+      right: 20px;
+      width: 320px;
+      height: 220px;
+      background-color: #dce6f7;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.25);
+      padding: 22px 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1100;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    #ads a {
+      background-color: #0055cc;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 7px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    #ads a:hover {
+      background-color: #003d99;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Atualizações Espírito Santo</h1>
+    <nav aria-label="Menu principal">
+      <ul>
+        <li><a href="#vitoria">Vitória</a></li>
+        <li><a href="#vila-velha">Vila Velha</a></li>
+        <li><a href="#serra">Serra</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="news-container">
+    <!-- Notícias serão inseridas aqui via JS -->
+  </main>
+
+  <footer id="footer-id">
+    <!-- ID da sessão será gerado via JS -->
+  </footer>
+
+  <div id="ads">
+    <a href="propaganda.html" target="_blank" rel="noopener noreferrer">CONFIRA AQUI ESSA NOVIDADE</a>
+  </div>
+
+  <script>
+    // Novas notícias
+    const news = [
+      {
+        title: "Vitória inaugura novo parque ecológico na região central",
+        city: "Vitória",
+        content: "A prefeitura abriu as portas do novo parque ecológico, com trilhas para caminhada e espaços para piquenique, promovendo lazer e contato com a natureza."
+      },
+      {
+        title: "Melhorias no sistema de transporte público em Vila Velha",
+        city: "Vila Velha",
+        content: "Novas linhas foram implementadas e os horários foram ajustados para garantir maior frequência e conforto aos usuários do transporte coletivo."
+      },
+      {
+        title: "Serra anuncia investimentos para saneamento básico",
+        city: "Serra",
+        content: "O projeto prevê ampliação da rede de esgoto e melhoria da qualidade da água, beneficiando milhares de moradores da região."
+      },
+      {
+        title: "Vitória promove festival cultural com atrações locais",
+        city: "Vitória",
+        content: "Durante uma semana, o evento contará com música, dança e exposições de arte que valorizam a cultura capixaba."
+      },
+      {
+        title: "Vila Velha lança programa de incentivo à reciclagem",
+        city: "Vila Velha",
+        content: "Iniciativa visa aumentar a coleta seletiva e a conscientização ambiental nas escolas e comunidades."
+      },
+      {
+        title: "Serra inaugura novo centro esportivo para a juventude",
+        city: "Serra",
+        content: "O espaço contará com quadras poliesportivas, academia ao ar livre e atividades gratuitas para a população."
+      }
+    ];
+
+    const container = document.getElementById('news-container');
+
+    news.forEach(noticia => {
+      const article = document.createElement('article');
+      article.setAttribute("itemscope", "");
+      article.setAttribute("itemtype", "https://schema.org/NewsArticle");
+
+      article.innerHTML = `
+        <h2 itemprop="headline">${noticia.title}</h2>
+        <p><strong>Cidade:</strong> <span itemprop="locationCreated">${noticia.city}</span></p>
+        <p itemprop="articleBody">${noticia.content}</p>
+        <hr/>
+      `;
+
+      container.appendChild(article);
+    });
+
+    // Gera ID único diferente (timestamp + random)
+    function generateUniqueId() {
+      return 'ID-' + Date.now().toString(36) + '-' + Math.floor(Math.random() * 10000);
+    }
+
+    const footer = document.getElementById('footer-id');
+    footer.innerHTML = `<p>ID da sessão: <strong>${generateUniqueId()}</strong></p>`;
+  </script>
+</body>
+</html>
